@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "85963bb2-3c2d-416f-9225-d63fa1f63d31",
+		"name": "Client API Collection",
+		"description": "Colección Postman para Client API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "7616199"
+	},
+	"item": [
+		{
+			"name": "Add Client",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Diana Paredes\",\n  \"email\": \"diana.paredesam@gmail.com\",\n  \"age\": 40,\n  \"clientType\": \"VIP\"\n}"
+				},
+				"url": "http://localhost:8080/clients"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Client by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/clients/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/clients"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Client",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n            \"name\": \"Diana Paredes\",\n            \"email\": \"diana.paredesam@gmail.com\",\n            \"age\": 40,\n            \"clientType\": \"VIP\"\n}"
+				},
+				"url": "http://localhost:8080/clients"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Client",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/clients/1"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "a7e1d67e-6aa6-4502-83db-4b6a4883ce98",
+		"name": "Loan API Collection",
+		"description": "API Collection for managing loans",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "7616199"
+	},
+	"item": [
+		{
+			"name": "Create Loan",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 1000.0,\n    \"clientId\": 1,\n    \"date\": \"2024-12-19\",\n    \"status\": \"PENDIENTE\"\n}"
+				},
+				"url": "http://localhost:8081/loans"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Active Loans",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/loans/active"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Loan by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/loans/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Loan Status",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"status\": \"PAGADO\"\n}"
+				},
+				"url": "http://localhost:8081/loans/status"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Loan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8081/loans/4"
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Loan Payment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/loans/1/payment"
+			},
+			"response": []
+		}
+	]
+}
