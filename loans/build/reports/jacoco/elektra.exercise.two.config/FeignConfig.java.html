@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FeignConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">loans</a> &gt; <a href="index.source.html" class="el_package">elektra.exercise.two.config</a> &gt; <span class="el_source">FeignConfig.java</span></div><h1>FeignConfig.java</h1><pre class="source lang-java linenums">package elektra.exercise.two.config;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+import feign.Logger;
+import feign.Request;
+import feign.codec.Decoder;
+import feign.codec.Encoder;
+import feign.jackson.JacksonDecoder;
+import feign.jackson.JacksonEncoder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+<span class="fc" id="L17">public class FeignConfig {</span>
+
+    @Bean
+    public ObjectMapper objectMapper() {
+<span class="fc" id="L21">        ObjectMapper mapper = new ObjectMapper();</span>
+<span class="fc" id="L22">        mapper.registerModule(new ParameterNamesModule());</span>
+<span class="fc" id="L23">        mapper.registerModule(new JavaTimeModule());</span>
+<span class="fc" id="L24">        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);</span>
+<span class="fc" id="L25">        return mapper;</span>
+    }
+
+    @Bean
+    public Decoder feignDecoder(ObjectMapper objectMapper) {
+<span class="fc" id="L30">        return new JacksonDecoder(objectMapper);</span>
+    }
+
+    @Bean
+    public Encoder feignEncoder(ObjectMapper objectMapper) {
+<span class="fc" id="L35">        return new JacksonEncoder(objectMapper);</span>
+    }
+
+    @Bean
+    Logger.Level feignLoggerLevel() {
+<span class="fc" id="L40">        return Logger.Level.FULL;</span>
+    }
+
+    @Bean
+    public Request.Options options() {
+<span class="fc" id="L45">        return new Request.Options(</span>
+                5000,
+                10000
+        );
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

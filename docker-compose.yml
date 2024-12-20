@@ -21,7 +21,9 @@ services:
       - "8081:8081"
     networks:
       - mi-red
-
+volumes:
+  - ./client/build/reports:/app/reports
+  
 networks:
   mi-red:
     driver: bridge

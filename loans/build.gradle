@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.3'
     id 'io.spring.dependency-management' version '1.1.6'
+    id 'jacoco'
 }
 
 group = 'elektra'
@@ -23,9 +24,26 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        xml.destination file("$buildDir/reports/jacoco/test-coverage.xml")
+
+        html.required = true
+        html.destination file("$buildDir/reports/jacoco")
+    }
+}
+
 dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'

@@ -21,6 +21,22 @@ Para ejecutar el proyecto utilizando Docker Compose, sigue estos pasos:
 3. Los servicios estarán disponibles en los siguientes puertos:
    - **Client Service:** http://localhost:8080
    - **Loan Service:** http://localhost:8081
+   
+## Acceso a Swagger UI
+
+Puedes acceder a los Swagger UI de cada servicio para explorar y probar las APIs de forma visual.
+
+- **Client Service Swagger UI:** [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+- **Loan Service Swagger UI:** [http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html)
+
+## Reporte de Cobertura de Pruebas con JaCoCo
+
+El reporte de cobertura de pruebas para este proyecto está disponible en formato HTML y se puede acceder en la siguiente ubicación:
+
+- client/build/reports/tests/test/index.html
+- loans/build/reports/tests/test/index.html
+
+Para ver el reporte, abre el archivo `index.html` ubicado en la carpeta `tests` dentro del directorio de reportes generado por JaCoCo.
 
 ## Instrucciones para Pruebas con Postman
 
