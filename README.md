@@ -82,7 +82,24 @@ Crea un nuevo cliente en el sistema.
     }
     ```
 
-### 2. Obtener Cliente por ID: `GET /clients/{id}`
+### 2. Obtener Todos los Clientes: `GET /clients`
+
+Obtiene una lista de todos los clientes.
+
+- **Respuesta exitosa:** 200 OK
+- **Ejemplo de respuesta:**
+    ```json
+    [
+        {
+            "id": 1,
+            "name": "Juan Perez",
+            "address": "123 Calle Principal",
+            "phone": "555-1234"
+        }
+    ]
+    ```
+
+### 3. Obtener Cliente por ID: `GET /clients/{id}`
 
 Obtiene la información detallada de un cliente por su ID.
 
@@ -96,6 +113,37 @@ Obtiene la información detallada de un cliente por su ID.
         "phone": "555-1234"
     }
     ```
+
+### 4. Actualizar Cliente: `PUT /clients`
+
+Actualiza los datos de un cliente existente.
+
+- **Payload de solicitud:**
+    ```json
+    {
+        "id": 1,
+        "name": "Juan Perez Actualizado",
+        "address": "123 Calle Nueva",
+        "phone": "555-5678"
+    }
+    ```
+- **Respuesta exitosa:** 200 OK
+- **Ejemplo de respuesta:**
+    ```json
+    {
+        "id": 1,
+        "name": "Juan Perez Actualizado",
+        "address": "123 Calle Nueva",
+        "phone": "555-5678"
+    }
+    ```
+
+### 5. Eliminar Cliente: `DELETE /clients/{id}`
+
+Elimina un cliente basándose en su ID.
+
+- **Parámetro de solicitud:** `id` (ID del cliente a eliminar)
+- **Respuesta exitosa:** 200 OK
 
 ---
 
@@ -142,8 +190,65 @@ Obtiene todos los préstamos activos.
     ]
     ```
 
+### 3. Obtener Préstamo por ID: `GET /loans/{id}`
+
+Obtiene la información de un préstamo por su ID.
+
+- **Respuesta exitosa:** 200 OK
+- **Ejemplo de respuesta:**
+    ```json
+    {
+        "id": 1,
+        "amount": 1000.0,
+        "clientId": 1,
+        "date": "2024-12-19",
+        "status": "PENDIENTE"
+    }
+    ```
+
+### 4. Actualizar Estado del Préstamo: `PATCH /loans/status`
+
+Actualiza el estado de un préstamo existente.
+
+- **Payload de solicitud:**
+    ```json
+    {
+        "id": 3,
+        "status": "PAGADO"
+    }
+    ```
+- **Respuesta exitosa:** 200 OK
+- **Ejemplo de respuesta:**
+    ```json
+    {
+        "id": 3,
+        "amount": 5000.0,
+        "status": "PAGADO"
+    }
+    ```
+
+### 5. Eliminar Préstamo: `DELETE /loans/{id}`
+
+Elimina un préstamo basándose en su ID.
+
+- **Parámetro de solicitud:** `id` (ID del préstamo a eliminar)
+- **Respuesta exitosa:** 200 OK
+
+### 6. Calcular Pago de Préstamo: `GET /loans/{id}/payment`
+
+Calcula el pago de un préstamo.
+
+- **Respuesta exitosa:** 200 OK
+- **Ejemplo de respuesta:**
+    ```json
+    {
+        "id": 1,
+        "paymentAmount": 150.0
+    }
+    ```
+
 ---
 
 ## Conclusión
 
-Este proyecto proporciona un servicio básico para gestionar clientes y préstamos, utilizando Spring Boot y Docker para su ejecución. Las pruebas se pueden realizar utilizando Postman, siguiendo las instrucciones anteriores para configurar las colecciones y las variables necesarias.
+Este proyecto proporciona un servicio básico para gestionar **clientes** y **préstamos**, utilizando **Spring Boot** y **Docker** para su ejecución. Las pruebas se pueden realizar utilizando **Postman**, siguiendo las instrucciones anteriores para configurar las colecciones y las variables necesarias.
